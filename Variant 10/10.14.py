@@ -1,5 +1,3 @@
-lx = []
-ly = []
 p = 1
 
 for x in range(17):
