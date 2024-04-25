@@ -1,33 +1,33 @@
-def f(x, h):
-    if (h == 3 or h == 5) and x >= 88:
+def f(S, h): # "S" - количество камней в куче; "h" - номер текущего хода
+    if (h == 3 or h == 5) and S >= 88: # если "S" 3-го или 5-го хода >= 88 (удовлетворяет задаче), то "S" изначальный - искомое значение
         return 1
-    elif h == 5 and x < 88:
+    elif h == 5 and S < 88: # проверяем "S" для других условий (неудовлетворяющих задаче)
         return 0
-    elif x >= 88 and h < 5:
+    elif h < 5 and S >= 88: # проверяем "S" для других условий (неудовлетворяющих задаче)
         return 0
     else:
-        if h % 2 == 0:
-            return f(x + 1, h + 1) or f(x + 4, h + 1) or f(x * 3, h + 1)
+        if h % 2 == 0: # проверка на чётность номера хода - в задаче именно 2-ой и 4-ый ходы (нечётный) ходы должны быть выигрышными
+            return f(S + 1, h + 1) or f(S + 4, h + 1) or f(S * 3, h + 1)
         else:
-            return f(x + 1, h + 1) and f(x + 4, h + 1) and f(x * 3, h + 1)
+            return f(S + 1, h + 1) and f(S + 4, h + 1) and f(S * 3, h + 1)
         
-def f1(x, h):
-    if h == 3 and x >= 88:
+def f1(S, h):
+    if h == 3 and S >= 88:
         return 1
-    elif h == 3 and x < 88:
+    elif h == 3 and S < 88:
         return 0
-    elif x >= 88 and h < 3:
+    elif h < 3 and S >= 88:
         return 0
     else:
         if h % 2 == 0:
-            return f1(x + 1, h + 1) or f1(x + 4, h + 1) or f1(x * 3, h + 1)
+            return f1(S + 1, h + 1) or f1(S + 4, h + 1) or f1(S * 3, h + 1)
         else:
-            return f1(x + 1, h + 1) and f1(x + 4, h + 1) and f1(x * 3, h + 1)
+            return f1(S + 1, h + 1) and f1(S + 4, h + 1) and f1(S * 3, h + 1)
  
-for x in range(1, 88):
-    if f(x, 1) == 1:
-        print(x)
+for S in range(1, 88): # Выписываем все "S", подходящие под 1-ое условие
+    if f(S, 1) == 1:
+        print(S)
 print('====')
-for x in range(1, 88):
-    if f1(x, 1) == 1:
-        print(x) #Answer: 24
+for S in range(1, 88): # Выписываем все "S", подходящие под 2-ое условие - их мы не будем учитывать в ответе
+    if f1(S, 1) == 1:
+        print(S) #Answer: 24
