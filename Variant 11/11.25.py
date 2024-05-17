@@ -15,4 +15,4 @@ for n in range(z, 10**8, 311):
                 if IsPrime(i) and IsPrime (n // i):
                     print(n, n // 311)
                 else:
-                    break;
+                    break
