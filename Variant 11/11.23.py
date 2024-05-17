@@ -5,4 +5,3 @@ def F(x, y, c):
         return 1
     return F(x+1, y, 0) + F(x + 2, y, 0) + F(x*3, y, c+1)
 print(F(1, 15, 0) * F(15, 43, 0))
->>>>>>> 1d1f62cb83b9c2511b3cef6f66f3decc4f9b9b51
