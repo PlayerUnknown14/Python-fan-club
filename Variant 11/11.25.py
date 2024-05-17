@@ -12,7 +12,7 @@ for n in range(z, 10**8, 311):
     if fnmatch(str(n),  '12?5*5??'):
         for i in range(2, int(n ** 0.5) + 1):
             if n % i == 0:
-                if IsPrime(i) and IsPrime (n // i):
+                if IsPrime(i) and IsPrime(n // i):
                     print(n, n // 311)
                 else:
                     break
